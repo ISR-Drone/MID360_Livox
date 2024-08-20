@@ -14,3 +14,8 @@ default gateways are 192.168.1.1."
 
 roscd livox_ros_driver2/launch and change rviz_MID_360.launch to reflect the change in the bd_list. (attached) The value can be found at the bottom of the LIVOX.
 
+For ease, it would be best to use an alias in the shell script. An example is given below
+
+alias enable_ether='sudo ifconfig eth0 192.168.1.50'
+alias slivox='source /home/elevate/Sensors/Livox/src/MID360_Livox/devel/setup.bash'
+alias livox_launch='enable_ether && slivox && roslaunch livox_ros_driver2 namespace_MID360.launch'
