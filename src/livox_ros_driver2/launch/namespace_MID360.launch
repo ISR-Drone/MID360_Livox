@@ -5,7 +5,7 @@
 	<!--user configure parameters for ros start-->
 	<arg name="lvx_file_path" default="livox_test.lvx"/>
 	<arg name="bd_list" default="47MDL3V0010113"/>
-	<arg name="xfer_format" default="1"/>
+	<arg name="xfer_format" default="0"/>
 	<arg name="multi_topic" default="0"/>
 	<arg name="data_src" default="0"/>
 	<arg name="publish_freq" default="10.0"/>
@@ -13,7 +13,7 @@
 	<arg name="rviz_enable" default="false"/>
 	<arg name="rosbag_enable" default="false"/>
 	<arg name="cmdline_arg" default="$(arg bd_list)"/>
-	<arg name="msg_frame_id" default="livox_frame"/>
+	<arg name="msg_frame_id" default="$(optenv UAV_NAME)/livox_frame"/>
 	<arg name="lidar_bag" default="true"/>
 	<arg name="imu_bag" default="true"/>
 	<!--user configure parameters for ros end--> 
@@ -34,7 +34,7 @@
 	      type="livox_ros_driver2_node" required="true"
 	      output="screen" args="$(arg cmdline_arg)"/>
 	
-	<node pkg="tf" type="static_transform_publisher" name="livox_to_jackal_tf" args="0.0 0.0 0.515 0.0 0.0 0.0 $(optenv UAV_NAME)/fcu /livox_frame"/>
+	<node pkg="tf" type="static_transform_publisher" name="livox_to_jackal_tf" args="0 0 0.515 0 0 0 $(optenv UAV_NAME)/fcu $(optenv UAV_NAME)/livox_frame 100"/>
 
 </group>
 </launch>

@@ -60,14 +60,14 @@ int main(int argc, char **argv) {
   bool lidar_bag = true;
   bool imu_bag   = false;
 
-  livox_node.GetNode().getParam("xfer_format", xfer_format);
-  livox_node.GetNode().getParam("multi_topic", multi_topic);
-  livox_node.GetNode().getParam("data_src", data_src);
-  livox_node.GetNode().getParam("publish_freq", publish_freq);
-  livox_node.GetNode().getParam("output_data_type", output_type);
-  livox_node.GetNode().getParam("frame_id", frame_id);
-  livox_node.GetNode().getParam("enable_lidar_bag", lidar_bag);
-  livox_node.GetNode().getParam("enable_imu_bag", imu_bag);
+  livox_node.GetNode().getParam("/uav1/xfer_format", xfer_format);
+  livox_node.GetNode().getParam("/uav1/multi_topic", multi_topic);
+  livox_node.GetNode().getParam("/uav1/data_src", data_src);
+  livox_node.GetNode().getParam("/uav1/publish_freq", publish_freq);
+  livox_node.GetNode().getParam("/uav1/output_data_type", output_type);
+  livox_node.GetNode().getParam("/uav1/frame_id", frame_id);
+  livox_node.GetNode().getParam("/uav1/enable_lidar_bag", lidar_bag);
+  livox_node.GetNode().getParam("/uav1/enable_imu_bag", imu_bag);
 
   printf("data source:%u.\n", data_src);
 
@@ -90,7 +90,7 @@ int main(int argc, char **argv) {
     DRIVER_INFO(livox_node, "Data Source is raw lidar.");
 
     std::string user_config_path;
-    livox_node.getParam("user_config_path", user_config_path);
+    livox_node.getParam("/uav1/user_config_path", user_config_path);
     DRIVER_INFO(livox_node, "Config file : %s", user_config_path.c_str());
 
     LdsLidar *read_lidar = LdsLidar::GetInstance(publish_freq);
