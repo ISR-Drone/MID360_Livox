@@ -5,7 +5,8 @@
 	<!--user configure parameters for ros start-->
 	<arg name="lvx_file_path" default="livox_test.lvx"/>
 	<arg name="bd_list" default="47MDL3V0010113"/>
-	<arg name="xfer_format" default="0"/>
+	<!-- If you want to  visualize the pointcloud use xfer_format=0 , If you want to use fastlio use xfer_format=1-->
+	<arg name="xfer_format" default="1"/> 
 	<arg name="multi_topic" default="0"/>
 	<arg name="data_src" default="0"/>
 	<arg name="publish_freq" default="10.0"/>
@@ -34,7 +35,7 @@
 	      type="livox_ros_driver2_node" required="true"
 	      output="screen" args="$(arg cmdline_arg)"/>
 	
-	<node pkg="tf" type="static_transform_publisher" name="livox_to_jackal_tf" args="0 0 0.515 0 0 0 $(optenv UAV_NAME)/fcu $(optenv UAV_NAME)/livox_frame 100"/>
+	<node pkg="tf" type="static_transform_publisher" name="livox_to_uav_tf" args="0 0 0.515 0 0 0 $(optenv UAV_NAME)/fcu $(optenv UAV_NAME)/livox_frame 100"/>
 
 </group>
 </launch>
